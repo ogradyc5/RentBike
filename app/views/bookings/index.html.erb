@@ -1,4 +1,7 @@
 
+<!DOCTYPE html>
+<html lang='en'>
+
 <h3> Booking for   
    <%= @store_bike.store.name %>   
    <%= @store_bike.bike.name %> 
@@ -17,10 +20,11 @@
     <td>
       <%= (booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
     </td>
-    <td><%= link_to "Delete", store_bike_booking_path(@store_bike, booking), data: { confirm: 'Are you sure?' }, method: :delete %>
+    <td><%= link_to "Delete", store_store_bike_booking_path(@store, @store_bike, booking), data: { confirm: 'Are you sure?' }, method: :delete %>
     </td>
-    <td><%= link_to "Edit", edit_store_bike_booking_path(@store_bike, booking) %>
+    <td><%= link_to "Edit", edit_store_store_bike_booking_path(@store, @store_bike, booking) %>
     </td>
   </tr>
   <% end %>
 </table>
+</html>

@@ -1,4 +1,7 @@
-<%= form_for([@store_bike, @booking]) do |f| %>
+<!DOCTYPE html>
+<html lang='en'>
+
+<%= form_for([@store, @store_bike, @booking]) do |f| %>
   <p>
     <%= f.label 'start_time', 'Start time' %>
     <%= f.datetime_select :start_time, { minute_step: 15 } %>
@@ -9,3 +12,6 @@
   </p>
   <%= f.submit 'Submit' %>
 <% end %> 
+
+
+</html>

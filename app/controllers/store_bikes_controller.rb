@@ -1,8 +1,16 @@
 class StoreBikesController < ApplicationController
-
-  def index
-    @store_bikes = StoreBike.all
-  end
+  before_action :set_store_bike, only: [:show, :edit, :update, :destroy]
+  before_action :find_store 
+  #def index
+   # @store_bikes = StoreBike.all
+  #end
+  def index  
+    if @store.nil?  
+      @store_bikes = StoreBike.all  
+    else
+      @store_bikes = StoreBike.where("store_id = ?", @store)  
+    end  
+  end  
 
   def new
     @store_bike = StoreBike.new
@@ -50,6 +58,12 @@ class StoreBikesController < ApplicationController
     
     def store_bike_params  
       params.require(:store_bike).permit(:bike_id, :store_id)  
+    end
+    
+    def find_store  
+      if params[:store_id]  
+        @store = Store.find_by_id(params[:store_id])  
+      end  
     end
 
 end
