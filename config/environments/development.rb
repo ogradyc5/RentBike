@@ -8,6 +8,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Do not eager load code on boot.
   config.eager_load = false
+  config.web_console.whitelisted_ips = '78.16.218.240'
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

@@ -5,4 +5,8 @@ class StoreBike < ActiveRecord::Base
   belongs_to :bike
   has_many :bookings
   
+  def sum_price
+    @booking.length * bike.price
+  end
+ 
 end

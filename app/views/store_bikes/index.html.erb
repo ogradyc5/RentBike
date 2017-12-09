@@ -5,6 +5,7 @@
   <div class="store_bike">
     <%= store_bike.store.name %>  
     <%= store_bike.bike.name %> 
+    <%= store_bike.bike.price %> 
     <%= link_to "Show all bookings", store_store_bike_bookings_path(@store, store_bike) %>
     <%= link_to "Delete", store_store_bike_path(@store, store_bike), data: { confirm: 'Are you sure?' }, method: :delete %>
     <%= link_to "Edit", edit_store_store_bike_path(@store, store_bike) %>

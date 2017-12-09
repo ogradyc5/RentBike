@@ -8,4 +8,11 @@ class Bike < ActiveRecord::Base
     def self.search(search)  
         where("lower(stores.name) LIKE :search OR lower(bikes.name) LIKE :search", search: "%#{search.downcase}%").uniq   
     end
+    
+
+    def total_income
+        total = 0
+        store_bike.each { |r| total += r.sum_price }
+        total
+    end
 end

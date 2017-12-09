@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+  resources :welcome
+  root to: 'welcome#index' 
   #resources :store_bikes do
 	 # resources :bookings
 	#end
@@ -38,9 +41,9 @@ Rails.application.routes.draw do
   #   resources :products
   resources :layouts
   resources :sessions, only: [:create, :destroy]
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  #devise_scope :user do
+   # root to: "devise/sessions#new"
+  #end
   #root to: "devise#index"
   # Example resource route with options:
   #   resources :products do

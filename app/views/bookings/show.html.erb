@@ -7,5 +7,5 @@
   <%= @booking.start_time.strftime('%e %b %Y %H:%M%p') %>
   until
   <%= (@booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
-  
+  <%= @store_bike.sum_price %>
 </html>
