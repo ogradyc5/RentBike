@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
   respond_to :html, :xml, :json
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :find_store 
   before_action :find_store_bike
-
+ 
   def index
     @bookings = Booking.where("store_bike_id = ? AND end_time >= ?", @store_bike.id, Time.now).order(:start_time)
     respond_with @bookings
@@ -16,7 +17,7 @@ class BookingsController < ApplicationController
 
   def create
     #@booking =  Booking.new(params[:booking].permit(:store_bike, :start_time, :length))
-    @booking =  Booking.new(params[:booking].permit(:store_bike_id, :start_time, :length))
+    @booking =  Booking.new(params[:booking].permit(:store_bike_id, :start_time, :length).merge(user_id: current_user.id))
     @booking.store_bike = @store_bike 
     #@booking.store_bike = StoreBike.find(params[:store_bike]).first
    # @booking.id = @store_bike
@@ -62,6 +63,12 @@ class BookingsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def find_store  
+    if params[:store_id]  
+      @store = Store.find_by_id(params[:store_id])  
+    end  
+  end
 
   private
 
@@ -82,9 +89,5 @@ class BookingsController < ApplicationController
   end
 
 
-  def find_store  
-    if params[:store_id]  
-      @store = Store.find_by_id(params[:store_id])  
-    end  
-  end
+ 
 end

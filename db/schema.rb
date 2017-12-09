@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20171209085131) do
     t.datetime "end_time"
     t.integer  "length"
     t.integer  "store_bike_id"
+    t.integer  "user_id"
   end
 
   add_index "bookings", ["store_bike_id"], name: "index_bookings_on_store_bike_id"

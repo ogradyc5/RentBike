@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
- # resources :store_bikes do
-	#  resources :bookings
+  #resources :store_bikes do
+	 # resources :bookings
 	#end
   resources :store_bikes
   resources :bikes
   resources :stores
+  resources :pages
   #resources :rent_bikes do
 	 # resources :bookings
-	#end
-  resources :resources do
+#	end
+  resources :stores do
 	  resources :bookings
 	end
 	
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
     end  
   end
   devise_for :users
+  
+  get '/search' => 'pages#search', :as => 'search_page'
 #resources :bookings
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -33,9 +36,12 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  #resources: layouts
+  resources :layouts
   resources :sessions, only: [:create, :destroy]
-  root 'stores#index'
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+  #root to: "devise#index"
   # Example resource route with options:
   #   resources :products do
   #     member do

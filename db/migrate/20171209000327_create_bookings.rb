@@ -5,6 +5,7 @@ class CreateBookings < ActiveRecord::Migration
       t.datetime :end_time
       t.integer :length
       t.belongs_to :resource, index: true, foreign_key: true
+      t.belongs_to :user, foreign_key: true
     end
   end
 end

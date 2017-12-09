@@ -1,4 +1,5 @@
 class StoreBikesController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_store_bike, only: [:show, :edit, :update, :destroy]
   before_action :find_store 
   #def index
@@ -61,9 +62,9 @@ class StoreBikesController < ApplicationController
     end
     
     def find_store  
-      if params[:store_id]  
-        @store = Store.find_by_id(params[:store_id])  
-      end  
-    end
+    if params[:store_id]  
+      @store = Store.find_by_id(params[:store_id])  
+    end  
+  end
 
 end
