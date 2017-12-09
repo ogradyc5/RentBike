@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209001153) do
+ActiveRecord::Schema.define(version: 20171209085131) do
 
   create_table "bikes", force: :cascade do |t|
     t.string   "name"
@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20171209001153) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "length"
-    t.integer  "resource_id"
+    t.integer  "store_bike_id"
   end
 
-  add_index "bookings", ["resource_id"], name: "index_bookings_on_resource_id"
+  add_index "bookings", ["store_bike_id"], name: "index_bookings_on_store_bike_id"
 
   create_table "rent_bikes", force: :cascade do |t|
     t.string "name"

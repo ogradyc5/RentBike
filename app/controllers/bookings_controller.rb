@@ -9,12 +9,16 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new(store_bike_id: @store_bike_id)
+    @booking = Booking.new(id: @store_bike)
+   # @booking = Booking.new(StoreBike.find(params[:store_bike]))
+   # @booking = @store_bike.bookings.build
   end
 
   def create
-    @booking =  Booking.new(params[:booking].permit(:store_bike_id, :start_time, :length))
-    @booking.store_bike = @store_bike
+    @booking =  Booking.new(params[:booking].permit(:store_bike, :start_time, :length))
+    @booking.store_bike = @store_bike 
+    #@booking.store_bike = StoreBike.find(params[:store_bike]).first
+   # @booking.id = @store_bike
     if @booking.save
       redirect_to store_bike_bookings_path(@store_bike, method: :get)
     else
@@ -69,8 +73,9 @@ class BookingsController < ApplicationController
   end
 
   def find_store_bike
-    if params[:id]
-      @store_bike = StoreBike.find_by_id(params[:id])
+    if params[:store_bike_id]
+      #@store_bike = StoreBike.find_by_id(params[:store_bike_id])
+      @store_bike = StoreBike.find(params[:store_bike_id])
     end
   end
 

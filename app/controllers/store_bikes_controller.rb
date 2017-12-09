@@ -10,6 +10,7 @@ class StoreBikesController < ApplicationController
 
   def create
     @store_bike = StoreBike.create(store_bike_params)
+    #@store_bike = StoreBike.new(parans[:store_bike])
     if @store_bike.save
       #name = @store_bike.name
       redirect_to store_bikes_path
