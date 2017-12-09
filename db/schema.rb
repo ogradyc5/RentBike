@@ -11,7 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208235036) do
+ActiveRecord::Schema.define(version: 20171209001153) do
+
+  create_table "bikes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "length"
+    t.integer  "resource_id"
+  end
+
+  add_index "bookings", ["resource_id"], name: "index_bookings_on_resource_id"
+
+  create_table "rent_bikes", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "resources", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "store_bikes", force: :cascade do |t|
+    t.integer  "store_id"
+    t.integer  "bike_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "store_bikes", ["bike_id"], name: "index_store_bikes_on_bike_id"
+  add_index "store_bikes", ["store_id"], name: "index_store_bikes_on_store_id"
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

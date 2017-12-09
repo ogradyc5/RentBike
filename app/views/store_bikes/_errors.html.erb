@@ -1,0 +1,13 @@
+<% if @store_bike.errors.any? %>
+  <div class="errors">
+    <h3>
+      <%= pluralize(@store_bike.errors.count, 'error') %>
+      prohibited this store_bike from being saved:
+    </h3>
+    <ul>
+      <% @store_bike.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
