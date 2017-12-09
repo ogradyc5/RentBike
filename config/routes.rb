@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
-  resources :store_bikes do
-	  resources :bookings
-	end
+ # resources :store_bikes do
+	#  resources :bookings
+	#end
   resources :store_bikes
   resources :bikes
   resources :stores
-  resources :rent_bikes do
-	  resources :bookings
-	end
+  #resources :rent_bikes do
+	 # resources :bookings
+	#end
   resources :resources do
 	  resources :bookings
 	end
+	
+	resources :stores do  
+   resources :store_bikes do  
+     resources :bookings  
+    end  
+  end
   devise_for :users
-  resources :bookings
+#resources :bookings
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
