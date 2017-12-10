@@ -7,9 +7,13 @@
     <%= store_bike.bike.name %> 
     <%= store_bike.bike.price %> 
     <%= link_to "Show all bookings", store_store_bike_bookings_path(@store, store_bike) %>
-    <%= link_to "Delete", store_store_bike_path(@store, store_bike), data: { confirm: 'Are you sure?' }, method: :delete %>
-    <%= link_to "Edit", edit_store_store_bike_path(@store, store_bike) %>
     <%= link_to "Add booking", new_store_store_bike_booking_path(@store, store_bike) %>
+    <% if signed_in? && (current_user == booking.user || current_user.admin?) %>
+      <%= link_to "Delete", store_store_bike_path(@store, store_bike), data: { confirm: 'Are you sure?' }, method: :delete %>
+      <%= link_to "Edit", edit_store_store_bike_path(@store, store_bike) %>
+    <% end %>
   </div>
 <% end %>
+<% if signed_in? && (current_user.admin?) %>
   <%= link_to 'New Store Bike', new_store_store_bike_path %>
+<% end %>

@@ -17,13 +17,16 @@
         <td><%= store.name %></td>
         <td><%= link_to 'Show Bike', store_store_bikes_path(store) %></td>
         <td><%= link_to 'Show', store %></td>
-        <td><%= link_to 'Edit', edit_store_path(store) %></td>
-        <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if signed_in? && (current_user.admin?) %>
+          <td><%= link_to 'Edit', edit_store_path(store) %></td>
+          <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Store', new_store_path %>
+<% if signed_in? && (current_user.admin?) %>
+  <%= link_to 'New Store', new_store_path %>
+<% end %>

@@ -18,10 +18,12 @@ class BookingsController < ApplicationController
   def create
     #@booking =  Booking.new(params[:booking].permit(:store_bike, :start_time, :length))
     @booking =  Booking.new(params[:booking].permit(:store_bike_id, :start_time, :length).merge(user_id: current_user.id))
+    @booking.user = User.first
     @booking.store_bike = @store_bike 
     #@booking.store_bike = StoreBike.find(params[:store_bike]).first
    # @booking.id = @store_bike
     if @booking.save
+      flash[:success] = "Booking was successfully created"
       redirect_to store_store_bike_bookings_path(@store, @store_bike, method: :get)
     else
       render 'new'

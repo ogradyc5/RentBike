@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   resources :welcome
   root to: 'welcome#index' 
+  
+  #get 'signup', to: 'users#new'
+  #resources :users, except: [:new]
   #resources :store_bikes do
 	 # resources :bookings
 	#end

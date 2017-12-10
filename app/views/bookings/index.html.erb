@@ -25,11 +25,19 @@
     <td>
       <%= booking.length * @store_bike.bike.price %>
     </td>
+    <div class="article-meta-details">
+
+    <% if signed_in? && (current_user == booking.user || current_user.admin?) %>
     <td><%= link_to "Delete", store_store_bike_booking_path(@store, @store_bike, booking), data: { confirm: 'Are you sure?' }, method: :delete %>
     </td>
     <td><%= link_to "Edit", edit_store_store_bike_booking_path(@store, @store_bike, booking) %>
     </td>
   </tr>
   <% end %>
+  <body>
+    <small>Created by: <%= booking.user.email if booking.user%>,
+    <%= time_ago_in_words(booking.created_at) %> ago,
+    last updated: <%= time_ago_in_words(booking.updated_at) %> ago</small>
+  </body>
 </table>
 </html>
