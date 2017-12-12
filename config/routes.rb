@@ -12,12 +12,12 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   resources :welcome
-  #root to: 'welcome#index' 
+  root to: 'welcome#index' 
 
   #get "/store_bikes" => "store_bikes#index"
   get 'users/my_profile'
   resources :users
-  root to: 'users#my_profile'
+  #root to: 'users#my_profile'
   
   resources :bikes
   resources :stores
