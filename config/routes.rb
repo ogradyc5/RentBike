@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  
   devise_for :users
   #resources :
   devise_scope :user do
@@ -10,34 +9,30 @@ Rails.application.routes.draw do
    match '/sessions.user', to: 'devise/sessions#create' , via: :post
    #post 'account/login' => 'account#login_user', :as => :session
   end
-  
-  
- # resources :users      #, only: [:show, :new, :create]
+
   get 'welcome/index'
   resources :welcome
   root to: 'welcome#index' 
- 
-  #get 'signup', to: 'users#new'
-  #resources :users, except: [:new]
-  #resources :store_bikes do
-	 # resources :bookings
-	#end
-  resources :store_bikes
+
+  #get "/store_bikes" => "store_bikes#index"
+
   resources :bikes
   resources :stores
   resources :pages
   #resources :rent_bikes do
 	 # resources :bookings
 #	end
-  resources :stores do
-	  resources :bookings
-	end
+  #resources :stores do
+#	  resources :bookings
+#	end
 	
-	resources :stores do  
+	
+ resources :stores do  
    resources :store_bikes do  
      resources :bookings  
     end  
   end
+ 
  
   
   get '/search' => 'pages#search', :as => 'search_page'
@@ -56,7 +51,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :layouts
+  #resources :layouts
   #resources :sessions, only: [:new, :create, :destroy]
   
   #root to: "devise#index"

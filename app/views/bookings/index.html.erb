@@ -23,21 +23,25 @@
       <%= (booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
     </td>
     <td>
-      <%= booking.length * @store_bike.bike.price %>
+      <!--%= booking.length * @store_bike.bike.price %-->
+    </td>
+    <td>
+      <%= booking.user_id %>
     </td>
     <div class="article-meta-details">
-
-    <% if signed_in? && (current_user == booking.user || current_user.admin?) %>
+    <body>
+    <td><small>Created by: <%= booking.user_id if booking.user_id%>,
+    <%= time_ago_in_words(booking.created_at) %> ago,
+    last updated: <%= time_ago_in_words(booking.updated_at) %></small></td>
+    </body>
+    </div>
+    <% if signed_in? && (current_user == booking.user) %> 
     <td><%= link_to "Delete", store_store_bike_booking_path(@store, @store_bike, booking), data: { confirm: 'Are you sure?' }, method: :delete %>
     </td>
     <td><%= link_to "Edit", edit_store_store_bike_booking_path(@store, @store_bike, booking) %>
     </td>
   </tr>
-  <% end %>
-  <body>
-    <small>Created by: <%= booking.user.email if booking.user%>,
-    <%= time_ago_in_words(booking.created_at) %> ago,
-    last updated: <%= time_ago_in_words(booking.updated_at) %> ago</small>
-  </body>
+  
 </table>
-</html>
+<% end %>
+<% end %>

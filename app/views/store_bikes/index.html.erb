@@ -1,19 +1,33 @@
 
-<h3>store bikes</h3>
+<h3>Bicycle Listing</h3>
 
-<% @store_bikes.each do |store_bike| %>
-  <div class="store_bike">
-    <%= store_bike.store.name %>  
-    <%= store_bike.bike.name %> 
-    <%= store_bike.bike.price %> 
-    <%= link_to "Show all bookings", store_store_bike_bookings_path(@store, store_bike) %>
-    <%= link_to "Add booking", new_store_store_bike_booking_path(@store, store_bike) %>
-    <% if signed_in? && (current_user == booking.user || current_user.admin?) %>
-      <%= link_to "Delete", store_store_bike_path(@store, store_bike), data: { confirm: 'Are you sure?' }, method: :delete %>
-      <%= link_to "Edit", edit_store_store_bike_path(@store, store_bike) %>
+<table>
+  <thead>
+    <tr>
+      <th>Store Name</th>
+      <th>Bicycle Name</th>
+      <th>Bicycle Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @store_bikes.each do |store_bike| %>
+    <tr>
+      <!--div class="store_bike"-->
+        <td><%= store_bike.store.name %></td>
+        <td><%= store_bike.bike.name %> </td>
+        <td><%= store_bike.bike.price %> </td>
+        <td><%= link_to "Show all bookings", store_store_bike_bookings_path(@store, store_bike) %></td>
+        <td><%= link_to "Add booking", new_store_store_bike_booking_path(@store, store_bike) %></td>
+        <% if signed_in? && (current_user.admin?) %>
+           <td> <%= link_to "Delete", store_store_bike_path(@store, store_bike), data: { confirm: 'Are you sure?' }, method: :delete %></td>
+           <td> <%= link_to "Edit", edit_store_store_bike_path(@store, store_bike) %></td>
+        <% end %>
+      <!--/div-->
+      <% if signed_in? && (current_user.admin?) %>
+      <%= link_to 'New Store Bike', new_store_store_bike_path %>
+      </tr>
     <% end %>
-  </div>
-<% end %>
-<% if signed_in? && (current_user.admin?) %>
-  <%= link_to 'New Store Bike', new_store_store_bike_path %>
-<% end %>
+  <% end %>
+  </tbody>
+</table>

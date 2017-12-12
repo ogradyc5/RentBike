@@ -17,8 +17,8 @@ class BookingsController < ApplicationController
 
   def create
     #@booking =  Booking.new(params[:booking].permit(:store_bike, :start_time, :length))
-    @booking =  Booking.new(params[:booking].permit(:store_bike_id, :start_time, :length).merge(user_id: current_user.id))
-    @booking.user = User.first
+    @booking = Booking.new(params[:booking].permit(:store_bike_id, :start_time, :length).merge(user_id: current_user.id))
+   # @booking.user = User.first
     @booking.store_bike = @store_bike 
     #@booking.store_bike = StoreBike.find(params[:store_bike]).first
    # @booking.id = @store_bike
@@ -65,15 +65,8 @@ class BookingsController < ApplicationController
       render 'edit'
     end
   end
-  
-  def find_store  
-    if params[:store_id]  
-      @store = Store.find_by_id(params[:store_id])  
-    end  
-  end
 
-  private
-
+private
   def save booking
     if @booking.save
         flash[:notice] = 'booking added'
@@ -90,6 +83,11 @@ class BookingsController < ApplicationController
     end
   end
 
+  def find_store  
+    if params[:store_id]  
+      @store = Store.find_by_id(params[:store_id])  
+    end  
+  end
 
  
 end
