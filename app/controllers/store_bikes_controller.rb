@@ -26,7 +26,6 @@ class StoreBikesController < ApplicationController
     @store_bike = StoreBike.create(store_bike_params)
     @store_bike = StoreBike.new(params[:store_bike])
     if @store_bike.save
-      #name = @store_bike.name
       redirect_to store_bikes_path
       flash[:notice] = '{#name} created'
     else
