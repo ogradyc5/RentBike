@@ -25,6 +25,7 @@ class BookingsController < ApplicationController
     if @booking.save
       flash[:success] = "Booking was successfully created"
       redirect_to store_store_bike_bookings_path(@store, @store_bike, method: :get)
+      #redirect_to store_store_bike_bookings_show_path
     else
       render 'new'
     end

@@ -28,9 +28,9 @@
     <td>
       <%= booking.user_id %>
     </td>
-    <div class="article-meta-details">
+    <div class="booking-meta-details">
     <body>
-    <td><small>Created by: <%= booking.user_id if booking.user_id%>,
+    <td><small>Booked by: <%= link_to booking.user_id if booking.user_id%>, <%= link_to gravatar_for(booking) if booking.user_id%>,  <!--li><!--%= link_to gravatar_for(booking.user_id), user_path(booking.user_id) %></li-->,
     <%= time_ago_in_words(booking.created_at) %> ago,
     last updated: <%= time_ago_in_words(booking.updated_at) %></small></td>
     </body>
@@ -41,7 +41,7 @@
     <td><%= link_to "Edit", edit_store_store_bike_booking_path(@store, @store_bike, booking) %>
     </td>
   </tr>
-  
+
 </table>
 <% end %>
 <% end %>

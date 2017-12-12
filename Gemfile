@@ -37,16 +37,16 @@ gem 'simple_form'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'web-console', '2.0'
   gem 'sqlite3'
-  gem 'web-console', '~> 2.0'
 end
 
 group :production do
   # Access an IRB console on exception pages or by using <%= console %> in views
-
+  
   gem 'pg'
   gem 'rails_12factor'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
