@@ -4,11 +4,18 @@
 <html lang='en'>
 
 <h3> Booking for   
+ 
    <%= @store_bike.store.name %>   
    <%= @store_bike.bike.name %> 
 </h3>
 <%= render 'errors' %>
-<%= render 'form' %> 
+<% if current_user.under_store_bike_limit? %>
+    <%= render 'form' %> 
+<% else %>
+    <span class="label label-default">
+        Bike cannot be booked because you have already booked 2 bikes
+    </span>
+<% end %>
 
 <div class="calendar_container">
   <div id="calendar">

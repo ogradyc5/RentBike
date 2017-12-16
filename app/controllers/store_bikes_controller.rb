@@ -1,5 +1,5 @@
 class StoreBikesController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_store_bike, only: [:show, :edit, :update, :destroy]
   before_action :find_store 
 
@@ -16,6 +16,21 @@ class StoreBikesController < ApplicationController
       @store = Store.find_by_id(params[:store_id])  
     end  
   end
+ 
+
+  def search
+    if params[:storebike].blank?
+        flash.now[:danger] = "You have entered an empty search"
+    else
+        @storebike = StoreBike.new_from_lookup(params[:storebike])
+        flash.now[:danger] = "You have entered an invalid search" unless
+      @storebike
+    end
+    render partial: 'users/result'
+  end
+
+  
+  
 
 
   def new

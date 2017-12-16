@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-    before_action :authenticate_user!, :except => [:show, :index]
+    #before_action :authenticate_user!, :except => [:show, :index]
     def search
         if params[:search].blank?  
             redirect_to(root_path, alert: "Empty field!") and return  

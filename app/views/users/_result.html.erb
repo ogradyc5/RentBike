@@ -1,0 +1,14 @@
+<div class="results-block">
+  <%= bootstrap_flash %>
+</div>
+
+<% if @storebike %>
+  <div class="well results-block">
+    <strong>Bike:</strong><%= @storebike.id %>
+    <strong>Name:</strong><%= @storebike.bike.name%>
+    <strong>Store:</strong><%= @storebike.store.name%>
+    <strong>Price:</strong><%= @storebike.bike.price%>
+  </div>
+  
+<% end %>
+

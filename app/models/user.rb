@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 
-  
   has_many :bookings
+  has_many :store_bikes, through: :bookings
+  
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   before_save { self.email = email.downcase }
@@ -12,5 +14,19 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 105 },
   uniqueness: { case_sensitive: false },
   format: { with: VALID_EMAIL_REGEX }
+  
+  def full_name
+    return "#{first_name} #{last_name}".strip if (first_name || last_name)
+    "Anonymous"
+  end 
+  
+  def under_store_bike_limit?
+    (bookings.count < 2)
+  end
+  
+  def can_add_store_bike?(id)
+    under_store_bike_limit? && !store_bike_already_added?(id)
+  end
+  
 
 end

@@ -1,56 +1,40 @@
   <% if current_user %>
-    <h3>Welcome: <%= current_user.email %></h3>
+    <div class="jumbotron">
+      <h2>Welcome <%= current_user.email %></h3>
   <% else %>
     <div class="jumbotron">
-      <h2>Welcome to the Photo Management App!</h2>
-    <p class="lead">
+      <h2>Welcome to Cycle Hub's Bicycle Renting App!</h2>
   <% end %>
-<!--%= link_to "logout", destroy_user_session_path, method: :delete %-->
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to('logout', destroy_user_session_path, method: :delete) %>        
-      </li>
-    <% else %>
-      <li>
-        <%= link_to('login', new_user_session_path)  %>  
-      </li>
-    <% end %>
-    <p>You'll love managing your Photos with our application. Sign up!</p>
-    </div>
-    <div class="row">
+  <p>🚲 You'll love managing your Cycling with our application 🚲</p>
+  </div>
+
+
+  <div class="row">
     <div class="plans clearfix">
-    <div class="col-lg-3 col-lg-offset-3 plan">
-      <h2>Premium Plan</h2>
-    <div class="price pull-right">
-      Price: $10
-    </div>
-    <div class="features">
-      <ul>
-        <li>Unlimited Image Uploads</li>
-        <li>Responsive design</li>
-        <li>Access anywhere</li>
-      </ul>
-    </div>
-    <p>
-      <%= link_to 'signup', new_user_registration_path, class: 'btn btn-primary sign-up' %>
-    </p>
-    </div>
-    <div class="col-lg-3 plan">
-      <h2>Amaze Plan</h2>
-    <div class="price pull-right">
-    Price: $20
-    </div>
-      <div class="features">
-        <ul>
-          <li>Unlimited Image Uploads</li>
-          <li>Responsive design</li>
-          <li>Access anywhere</li>
-          <li class='extra'>Unlimited projects</li>
-        </ul>
-        </div>
-          <p>
-          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
-          </p>
+      <div class="col-lg-3 col-lg-offset-3 plan">
+        <h2>Professional Racing</h2>
+          <div class="features">
+            <ul>
+              <li>Unrivalled brands</li>
+              <li>Latest designs</li>
+              <li>Location ordering</li>
+            </ul>
+          </div>
+        <%= link_to new_user_registration_path, class: 'btn btn-danger sign-up' do %><i class="glyphicon glyphicon-ok"></i>Professional Bikes <% end %>
+      </div>
+        
+      <div class="col-lg-3 plan">
+        <h2>Recreational Cycling</h2>
+          <div class="features">
+            <ul>
+              <li>Unlimited range</li>
+              <li>Flexible designs</li>
+              <li>Access anywhere</li>
+            </ul>
+          </div>
+          <%= link_to new_user_registration_path, class: 'btn btn-primary sign-up' do %><i class="glyphicon glyphicon-ok"></i>Recreational Bikes <% end %>
         </div>
       </div>
-  </div>
+    </div>
+    
+

@@ -1,6 +1,6 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   # GET /bikes
   # GET /bikes.json
   def index
@@ -11,7 +11,23 @@ class BikesController < ApplicationController
   # GET /bikes/1.json
   def show
   end
+  
+  def list
+    @bookings = @user.bookings.all if @user
+  end 
 
+ # def search
+  #  if params[:bike].blank?
+   #   flash.now[:danger] = "You have entered an incorrect entry"
+    #else
+     # @bike = Bike.new_from_lookup(params[:bike])
+      #flash.now[:danger] = "You have entered an empty search string" unless
+#  @bike
+ #   end
+  #  render partial: 'users/result'
+  #end
+  
+  
   # GET /bikes/new
   def new
     @bike = Bike.new

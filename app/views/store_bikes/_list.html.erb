@@ -1,0 +1,31 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Days</th>
+      <th>Unit Price</th>
+      <th>Total Price</th>
+      <% if @user.id == current_user.id %>
+        <th>Actions</th>
+      <% end %>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.id %></td>
+        <td><%= booking.length %></td>
+        <td><%= booking.store_bike.bike.price %></td>
+        <td><%= booking.sum_price %></td>
+        <% if @user.id == current_user.id %>
+          <td><%= link_to "Delete this booking", booking_path(booking), 
+                      method: :delete,
+                      data: {confirm: "Are you sure?"}, 
+                      class: "btn btn-xs btn-danger" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

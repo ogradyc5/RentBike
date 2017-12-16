@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   respond_to :html, :xml, :json
-  before_action :authenticate_user!, :except => [:show, :index]
+  #before_action :authenticate_user!, :except => [:show, :index]
   before_action :find_store 
   before_action :find_store_bike
  
@@ -24,12 +24,37 @@ class BookingsController < ApplicationController
    # @booking.id = @store_bike
     if @booking.save
       flash[:success] = "Booking was successfully created"
-      redirect_to store_store_bike_bookings_path(@store, @store_bike, method: :get)
+      #redirect_to store_store_bike_bookings_path(@store, @store_bike, method: :get)
       #redirect_to store_store_bike_bookings_show_path
+      redirect_to my_profile_path
     else
       render 'new'
     end
   end
+  
+ #  def search
+  #  if params[:booking].blank?
+   #     flash.now[:danger] = "You have entered an empty search"
+    #else
+     #   @booking = Booking.new_from_lookup(params[:booking])
+      #  flash.now[:danger] = "You have entered an invalid search" unless
+      #@booking
+    #end
+    #render partial: 'users/result'
+  #end
+
+  
+  
+   #def create
+    #store_bike = StoreBike.find_by_id(params[:store_bike_id])
+    #if store_bike.blank?
+     # store_bike = StoreBike.new_from_lookup(params[:store_bike_id])
+      #store_bike.save
+    #end
+    #@booking = Booking.create(user: current_user, store_bike: store_bike)
+    #flash[:success] = "Booking #{@booking.bike.name} was successfully added to portfolio"
+    #redirect_to my_profile_path
+  #end
 
   def show
     @booking = Booking.find(params[:id])
@@ -39,11 +64,20 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]).destroy
     if @booking.destroy
       flash[:notice] = "Booking: #{@booking.start_time.strftime('%e %b %Y %H:%M%p')} to #{@booking.end_time.strftime('%e %b %Y %H:%M%p')} deleted"
-      redirect_to store_store_bike_bookings_path(@store, @store_bike)
+     # redirect_to store_store_bike_bookings_path(@store, @store_bike)
+     redirect_to my_profile_path
     else
       render 'index'
     end
   end
+  
+  # def destroy
+   #     booking = Booking.find(params[:id])
+    #    @user_booking = UserBooking.where(user_id: current_user.id, booking_id: booking.id).first
+     #   @user_booking.destroy
+      #  flash[:notice] = "Booking was successfully removed from profile"
+       # redirect_to my_profile_path
+  #  end 
 
   def edit
     @booking = Booking.find(params[:id])
