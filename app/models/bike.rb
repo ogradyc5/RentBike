@@ -4,7 +4,9 @@ class Bike < ActiveRecord::Base
     has_many :stores, :through => :store_bikes  
     has_many :store_bikes, :dependent => :destroy
     
-    
+    mount_uploader :image, ImageUploader
+  
+  
     def self.search(search)  
         where("lower(stores.name) LIKE :search OR lower(bikes.name) LIKE :search", search: "%#{search.downcase}%").uniq   
     end

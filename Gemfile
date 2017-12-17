@@ -3,13 +3,20 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
+gem "paperclip", "~> 5.0.0"
 # Use sqlite3 as the database for Active Record
 gem 'puma'
+gem 'bootstrap-generators'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'twitter-bootstrap-rails' 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 gem 'stock_quote'
+gem 'fog'
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'devise-bootstrap-views'
@@ -23,6 +30,7 @@ gem 'devise'
 gem 'warden'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'geocoder'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

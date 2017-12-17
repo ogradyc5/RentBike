@@ -11,6 +11,7 @@
 // about supported directives.
 //
 /* global $ */
+//= require underscore
 //= require jquery
 //= require moment 
 //= require fullcalendar
@@ -20,8 +21,7 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-
-$('#calendar').fullCalendar({});
+//= require gmaps/google
 
 $(document).ready(function(){
   $('#storebike-lookup-form').on('ajax:complete', function(event, data, status){

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :cycles
+  resources :cycles
+  resources :cycles
   devise_for :users,:controllers => { :registrations => "user/registrations"}
 
   #devise_scope :user do
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   #end
   get 'list_bookings', to: 'bookings#list'
   resources :bookings, only: [:create, :destroy]
+  resources :cycles
   get 'search_bookings', to: 'bookings#search'
   get 'search_store_bikes', to: 'store_bikes#search'
  # get 'welcome/index'

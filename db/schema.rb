@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216203620) do
+ActiveRecord::Schema.define(version: 20171217191823) do
 
   create_table "bikes", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal  "price"
+    t.string   "image"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -31,6 +32,14 @@ ActiveRecord::Schema.define(version: 20171216203620) do
   end
 
   add_index "bookings", ["store_bike_id"], name: "index_bookings_on_store_bike_id"
+
+  create_table "cycles", force: :cascade do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "rent_bikes", force: :cascade do |t|
     t.string "name"

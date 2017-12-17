@@ -1,5 +1,5 @@
 class BikesController < ApplicationController
-  before_action :set_bike, only: [:show, :edit, :update, :destroy]
+  before_action :set_bike, only: [:create, :show, :edit, :update, :destroy]
   #before_action :authenticate_user!, :except => [:show, :index]
   # GET /bikes
   # GET /bikes.json
@@ -15,17 +15,6 @@ class BikesController < ApplicationController
   def list
     @bookings = @user.bookings.all if @user
   end 
-
- # def search
-  #  if params[:bike].blank?
-   #   flash.now[:danger] = "You have entered an incorrect entry"
-    #else
-     # @bike = Bike.new_from_lookup(params[:bike])
-      #flash.now[:danger] = "You have entered an empty search string" unless
-#  @bike
- #   end
-  #  render partial: 'users/result'
-  #end
   
   
   # GET /bikes/new
@@ -86,6 +75,6 @@ class BikesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bike_params
-      params.require(:bike).permit(:name)
+      params.require(:bike).permit(:name, :image, :remove_image)
     end
 end

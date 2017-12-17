@@ -9,6 +9,8 @@
   <%= @bike.name %>
   <strong>Price:</strong>
   <%= @bike.price%>
+  <strong>Image:</strong>
+  <%= image_tag @bike.image%>
 </p>
 
 <%= link_to 'Edit', edit_bike_path(@bike) %> |
