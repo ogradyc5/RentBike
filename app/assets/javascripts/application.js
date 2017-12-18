@@ -23,8 +23,15 @@
 //= require_tree .
 //= require gmaps/google
 
-$(document).ready(function(){
+//$(document).ready(function(){
+  //$('#storebike-lookup-form').on('ajax:complete', function(event, data, status){
+    //$('#results').html(data.responseText)
+ //})
+//});
+
+$(document).on('turbolinks:load', function(){
   $('#storebike-lookup-form').on('ajax:complete', function(event, data, status){
     $('#results').html(data.responseText)
   })
-});
+})
+

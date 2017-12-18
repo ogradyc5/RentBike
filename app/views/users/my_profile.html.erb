@@ -6,25 +6,28 @@
     
       <!--h2 align="center"> <strong>Welcome <!%= current_user.first_name %></strong> </h2--> 
     
-    <link rel="stylesheet" href="css/application.css">
+    <!--link rel="stylesheet" href="css/application.css">
   </head>
   <body>
-    <header id="main_navigation" class="clearfix">
-      <h1 align="center"> <%= gravatar_for(current_user, size: 150) %> </h1>
-      <a href="#" class="name"><%= current_user.full_name %></a>
-      <nav>
+    <header id="main_navigation" class="clearfix"-->
+    
+  <div class="jumbotron">
+    <h1 align="center"> <%= gravatar_for(current_user, size: 150) %> </h1>
+      <a href="#" class="name" align="center"><%= current_user.full_name %></a>
+  </div>
+      <!--nav>
         <a href="#">My Profile</a>
-        <a href="#">Edit Profile</a>
+        <a href="#">My Friends</a>
         <a href="#">Bicycles</a>
       </nav>
-    </header>
+    </header-->
     
-    <div class="wrapper clearfix">
+    <!--div class="wrapper clearfix">
       <div class="col-1 homepage_content">
         <p>Newsfeed</p>
         <hr><p></p>
-      </div>
-      <div class="col-2 homepage_content">
+      </div-->
+      <!--div class="col-2 homepage_content"-->
         <p>Bicycle Search</p>
          <div id="storebike-lookup">
           <%= form_tag search_store_bikes_path, remote: true, method: :get, id: "storebike-lookup-form" do %>
@@ -41,14 +44,16 @@
           <% end %>
         </div>
       </div>
-      <div class="col-3 homepage_content">
+      <!--div class="col-3 homepage_content">
         <p>Booking History</p>
-      </div>
+      </div-->
     </div>
   </body>
-  
-  <!--div class="jumbotron">
-  </div-->
+  <div id="results">
+    <%= render "users/result" %>
+  </div> 
+<%= render 'store_bikes/list' %>
+ 
 </html>
 
 
@@ -69,9 +74,5 @@
             </div>
           </div>
         <!% end %>
-      </div><br><br><br><br>
+      </div><br><br><br><br-->
  
-<div id="results">
-    <!%= render "users/result" %>
-</div> 
-<!%= render 'store_bikes/list' %>

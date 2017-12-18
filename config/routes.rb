@@ -16,10 +16,11 @@ Rails.application.routes.draw do
  # get 'welcome/index'
  # get 'search_store_bikes', to: 'storebikes#search'
   resources :welcome
+  resources :friendships
   root to: 'welcome#index' 
 
   get 'my_profile', to: 'users#my_profile'
-  resources :users
+  resources :users, only: [:show]
   resources :bikes do
    member do
     put 'like' => 'bikes#upvote'
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
   resources :store_bikes
   resources :pages
   get 'my_friends', to: 'users#my_friends'
-	
+	 get 'search_friends', to: 'users#search'
   resources :stores do  
    resources :store_bikes do  
      resources :bookings  
