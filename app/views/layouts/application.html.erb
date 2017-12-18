@@ -2,22 +2,27 @@
 <html lang='en'>
 
 <head>
-  <title>Workspace</title>
+  <title>Cycle Hub</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
+  <link rel= "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel= "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.js"></script>
+  
 </head>
 <%= render 'layouts/header' %>
-<div class = "container">
   <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    <%= bootstrap_flash %>
-    <%= yield %>
+    <div class = "container">
+      <!--% if notice %>
+        <p class="alert alert-success"><!--%= notice %></p>
+      <!--% end %>
+      <!--% if alert %>
+        <p class="alert alert-danger"><!--%= alert %></p-->
+      <!--% end %-->
+      <!--%= bootstrap_flash %-->
+      <%= yield %>
+    </div>
   </body>
-</div>
 </html>

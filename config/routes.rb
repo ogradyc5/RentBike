@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :cycles
-  resources :cycles
-  resources :cycles
+
   devise_for :users,:controllers => { :registrations => "user/registrations"}
 
   #devise_scope :user do
@@ -22,8 +20,13 @@ Rails.application.routes.draw do
 
   get 'my_profile', to: 'users#my_profile'
   resources :users
-  resources :bikes
-  resources :stores
+  resources :bikes do
+   member do
+    put 'like' => 'bikes#upvote'
+    put 'unlike' => 'bikes#downvote'
+   end 
+  end 
+  resources :store_bikes
   resources :pages
 
 	
@@ -36,5 +39,5 @@ Rails.application.routes.draw do
  resources :user_bookings, only: [:create, :destroy]
   
  get '/search' => 'pages#search', :as => 'search_page'
-
+ match '*path', via: :all, to: redirect('/404')
 end

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :store_bikes, through: :bookings
-  
+  acts_as_voter
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

@@ -1,7 +1,9 @@
 class StoreBikesController < ApplicationController
   #before_action :authenticate_user!, :except => [:show, :index]
-  before_action :set_store_bike, only: [:show, :edit, :update, :destroy]
   before_action :find_store 
+  before_action :set_store_bike, only: [:create, :show, :edit, :update, :destroy]
+  
+
 
   def index  
     if @store.nil?  
@@ -16,7 +18,7 @@ class StoreBikesController < ApplicationController
       @store = Store.find_by_id(params[:store_id])  
     end  
   end
- 
+
 
   def search
     if params[:storebike].blank?
@@ -29,20 +31,17 @@ class StoreBikesController < ApplicationController
     render partial: 'users/result'
   end
 
-  
-  
-
-
   def new
     @store_bike = StoreBike.new
   end
 
   def create
+    #@store_bike = StoreBike.create(store_bike_params)
+   # @store_bike = StoreBike.new(params[:store_bike])
     @store_bike = StoreBike.create(store_bike_params)
-    @store_bike = StoreBike.new(params[:store_bike])
     if @store_bike.save
       redirect_to store_bikes_path
-      flash[:notice] = '{#name} created'
+      flash[:notice] ='successfully created'
     else
       render 'new'
       flash[:error] = "Unable to create store bike. Please try again"

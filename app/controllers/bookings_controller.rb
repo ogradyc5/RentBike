@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = Booking.where("store_bike_id = ? AND end_time >= ?", @store_bike.id, Time.now).order(:start_time)
     respond_with @bookings
+    #@bookings = Booking.all
   end
 
   def new

@@ -25,14 +25,11 @@
     <td>
       <!--%= booking.length * @store_bike.bike.price %-->
     </td>
-    <td>
-      <%= booking.user_id %>
-    </td>
     <div class="booking-meta-details">
     <body>
-    <td><small>Booked by: <%= link_to booking.user_id if booking.user_id%>, <%= link_to gravatar_for(booking) if booking.user_id%>,  <!--li><!--%= link_to gravatar_for(booking.user_id), user_path(booking.user_id) %></li-->,
+    <td><small>Booked by: <%= booking.user_id if booking.user_id%> <%= link_to gravatar_for(booking.user), user_path(booking.user_id) if booking.user_id%>  <!--li><!--%= link_to gravatar_for(booking.user_id), user_path(booking.user_id) %></li-->
     <%= time_ago_in_words(booking.created_at) %> ago,
-    last updated: <%= time_ago_in_words(booking.updated_at) %></small></td>
+    last updated: <%= time_ago_in_words(booking.updated_at) %> ago</small></td>
     </body>
     </div>
     <% if signed_in? && (current_user == booking.user) %> 

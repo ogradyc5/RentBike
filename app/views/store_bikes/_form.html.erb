@@ -4,6 +4,7 @@
    <%= render 'errors' %>  
    <%= f.association :store %>  
    <%= f.association :bike %>  
+      <!--% value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), step: :any %-->
    <%= f.submit 'Submit' %>  
 <% end %>
 

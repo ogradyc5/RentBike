@@ -1,5 +1,6 @@
 <% @user ||= current_user %>
-<h1 align="center"> <%= link_to gravatar_for(current_user, size: 150) %> Welcome <%= current_user.email %></h1>
+<h1 align="center"> <%= gravatar_for(current_user, size: 150) %> Welcome <%= current_user.first_name %></h1> <!--%= link_to gravatar_for(current_user, size: 150) %-->
+  <h2> <% gravatar_for(@user) %></h2>
   <h3 align="center">Your Booking History</h3>
     
     <h3> Search for Bikes </h3>

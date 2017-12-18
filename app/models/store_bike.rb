@@ -3,7 +3,7 @@ class StoreBike < ActiveRecord::Base
   validates_uniqueness_of :bike_id, :scope => [:store_id]  
   belongs_to :store  
   belongs_to :bike
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
   
   def self.find_by_store_bike_id(store_bike_id)

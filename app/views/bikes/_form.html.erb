@@ -18,6 +18,8 @@
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
+    <%= f.label :price %><br>
+    <%= f.number_to_currency_field :price %>
     <%= f.label :image %><br>
     <%= f.file_field :image %>
     <% if f.object.image? %>

@@ -3,24 +3,21 @@
 
 <h3>Booking Confirmation</h3>
 <p>Your booking is confirmed for
-  <%= @store_bike.name %>:
+  <%= @store_bike.bike.name %>:
   <%= @booking.start_time.strftime('%e %b %Y %H:%M%p') %>
   until
   <%= (@booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
-  <% @bookings.each do |booking| %>
-    <%= booking.length * @store_bike.bike.price %>
-  <% end %>
   
   <ul class="listing">
     <div class="row center">
       <div class="col-md-4 col-md-offset-4">
-        <li>Booked by:</li>
-          <li><%= link_to gravatar_for(@booking.user_id), user_path(@booking.user_id) %></li>
-            <li class="booking-title">
-              <%= link_to @booking.user_id.email, user_path(@booking.user_id) %>
-            </li>
+        <td>Booked by:</td>
+          <td><%= link_to gravatar_for(@booking.user), user_path(@booking.user) %></td>
+            <td class="booking-title">
+             <%= link_to @booking.user.email, user_path(@booking.user) %>
+            </td>
             <li><small>
-              <%= pluralize(@booking.user_id.bookings.count, "booking") if @booking.user_id.bookings %>
+              <%= pluralize(@booking.user.bookings.count, "booking") if @booking.user.bookings %>
             </small></li>
           </li>
         </li>

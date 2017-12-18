@@ -1,10 +1,10 @@
 class BikesController < ApplicationController
-  before_action :set_bike, only: [:create, :show, :edit, :update, :destroy]
+  before_action :set_bike, only: [:create, :show, :edit, :update, :destroy, :upvote, :downvote]
   #before_action :authenticate_user!, :except => [:show, :index]
   # GET /bikes
   # GET /bikes.json
   def index
-    @bikes = Bike.all
+    @bikes = Bike.all.order(:cached_votes_score => :desc)
   end
 
   # GET /bikes/1
@@ -66,6 +66,16 @@ class BikesController < ApplicationController
     end
   end
   
+  def upvote
+    @bike.upvote_from current_user
+    redirect_to bikes_path
+  end 
+
+  def downvote
+    @bike.downvote_from current_user
+    redirect_to bikes_path
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -75,6 +85,6 @@ class BikesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bike_params
-      params.require(:bike).permit(:name, :image, :remove_image)
+      params.require(:bike).permit(:name, :image, :remove_image, :price)
     end
 end
