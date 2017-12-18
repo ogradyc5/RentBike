@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end 
   resources :store_bikes
   resources :pages
-
+  get 'my_friends', to: 'users#my_friends'
 	
   resources :stores do  
    resources :store_bikes do  

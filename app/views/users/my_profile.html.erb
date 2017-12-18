@@ -1,26 +1,77 @@
+
 <% @user ||= current_user %>
-<h1 align="center"> <%= gravatar_for(current_user, size: 150) %> Welcome <%= current_user.first_name %></h1> <!--%= link_to gravatar_for(current_user, size: 150) %-->
-  <h2> <% gravatar_for(@user) %></h2>
-  <h3 align="center">Your Booking History</h3>
+<!DOCTYPE html>
+<html>
+  <head>
+    
+      <!--h2 align="center"> <strong>Welcome <!%= current_user.first_name %></strong> </h2--> 
+    
+    <link rel="stylesheet" href="css/application.css">
+  </head>
+  <body>
+    <header id="main_navigation" class="clearfix">
+      <h1 align="center"> <%= gravatar_for(current_user, size: 150) %> </h1>
+      <a href="#" class="name"><%= current_user.full_name %></a>
+      <nav>
+        <a href="#">My Profile</a>
+        <a href="#">Edit Profile</a>
+        <a href="#">Bicycles</a>
+      </nav>
+    </header>
+    
+    <div class="wrapper clearfix">
+      <div class="col-1 homepage_content">
+        <p>Newsfeed</p>
+        <hr><p></p>
+      </div>
+      <div class="col-2 homepage_content">
+        <p>Bicycle Search</p>
+         <div id="storebike-lookup">
+          <%= form_tag search_store_bikes_path, remote: true, method: :get, id: "storebike-lookup-form" do %>
+            <div class="form-group row no-padding text-center col-md-12">
+              <div class="col-md-10">
+                <%= number_field_tag :storebike, params[:storebike], placeholder: "Bike id", autofocus: true, class: "form-control search-box input-lg" %>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+              <i class="fa fa-search"></i> Look up a bike
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-3 homepage_content">
+        <p>Booking History</p>
+      </div>
+    </div>
+  </body>
+  
+  <!--div class="jumbotron">
+  </div-->
+</html>
+
+
+  <!--h3 align="center">Your Booking History</h3>
     
     <h3> Search for Bikes </h3>
     
       <div id="storebike-lookup">
-        <%= form_tag search_store_bikes_path, remote: true, method: :get, id: "storebike-lookup-form" do %>
+        <!%= form_tag search_store_bikes_path, remote: true, method: :get, id: "storebike-lookup-form" do %>
           <div class="form-group row no-padding text-center col-md-12">
             <div class="col-md-10">
-              <%= number_field_tag :storebike, params[:storebike], placeholder: "Bike id", autofocus: true, class: "form-control search-box input-lg" %>
+              <!%= number_field_tag :storebike, params[:storebike], placeholder: "Bike id", autofocus: true, class: "form-control search-box input-lg" %>
             </div>
             <div class="col-md-2">
-              <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+              <!%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
                 <i class="fa fa-search"></i> Look up a bike
-              <% end %>
+              <!% end %>
             </div>
           </div>
-        <% end %>
+        <!% end %>
       </div><br><br><br><br>
  
 <div id="results">
-    <%= render "users/result" %>
+    <!%= render "users/result" %>
 </div> 
-<%= render 'store_bikes/list' %>
+<!%= render 'store_bikes/list' %>

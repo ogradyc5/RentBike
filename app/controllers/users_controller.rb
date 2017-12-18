@@ -16,6 +16,8 @@ class UsersController < ApplicationController
         redirect_to :action => :my_profile
     end
     
+    def my_friends
+    end
     
   
 end 

@@ -1,15 +1,28 @@
-
+* {
+    font-family: 'Bungee', cursive;
+    
+}
 
 .user-name {
     padding-top: 15px;
     color: #fff;
+    font-family: 'Bungee', cursive;
 }
 
 .nav.navbar-right li {
 
     .btn-danger:hover {
         background-color: darken(#d9534f, 20%) !important;
+        font-family: 'Bungee', cursive;
     }
+}
+
+.nav.navbar-nav li {
+    font-family: 'Bungee', cursive;
+}
+
+.btn {
+    font-family: 'Bungee', cursive;
 }
 
 
@@ -24,3 +37,4 @@
 .unlike:hover {
     text-decoration: none;
 }
+

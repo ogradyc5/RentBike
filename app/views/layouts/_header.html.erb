@@ -1,3 +1,4 @@
+<link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet' type='text/css'>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -8,7 +9,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><%= link_to 'my_profile', class: 'btn btn-danger sign-up' do %><i class="glyphicon glyphicon-ok"></i> My Profile <% end %></li>
       <li class="active"><%= link_to "Edit Profile", edit_registration_path(current_user) %></li>
-      <!--li class="active"><!--%= link_to 'link 3', "/path3", %> </li-->
+      <!--li class="active"><!%= link_to '', "/path3", %> </li-->
       <%= form_tag(search_page_path, :method => "get", class: 'navbar-form navbar-left') do %>  
         <div class="input-group">  
           <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  

@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   has_many :bookings, dependent: :destroy
   has_many :store_bikes, through: :bookings
+  has_many :friendships
+  has_many :friends, through: :friendships
   acts_as_voter
   
   devise :database_authenticatable, :registerable,

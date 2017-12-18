@@ -242,6 +242,10 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
+    google-search (1.0.3)
+      json
+    google-webfonts-rails (0.0.4)
+      activesupport (> 3.2.0, < 5.0)
     grease (0.3.1)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -286,6 +290,7 @@ GEM
     netrc (0.11.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    normalize-rails (4.1.1)
     orm_adapter (0.5.0)
     paperclip (5.0.0)
       activemodel (>= 4.2.0)
@@ -420,10 +425,13 @@ DEPENDENCIES
   fullcalendar-rails
   geocoder
   gmaps4rails
+  google-search
+  google-webfonts-rails (~> 0.0.4)
   jbuilder (~> 1.2)
   jquery-rails
   mini_magick (~> 4.3)
   momentjs-rails
+  normalize-rails
   paperclip (~> 5.0.0)
   pg
   puma

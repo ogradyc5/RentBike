@@ -7,7 +7,9 @@ gem "paperclip", "~> 5.0.0"
 # Use sqlite3 as the database for Active Record
 gem 'puma'
 gem 'bootstrap-generators'
+gem 'google-search'
 gem 'bootstrap-sass', '~> 3.3.1'
+gem 'google-webfonts-rails', '~> 0.0.4'
 gem 'twitter-bootstrap-rails' 
 gem 'acts_as_votable', '~> 0.11.1'
 # Use SCSS for stylesheets
@@ -18,6 +20,7 @@ gem 'stock_quote'
 gem 'fog'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
+gem 'normalize-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'devise-bootstrap-views'
