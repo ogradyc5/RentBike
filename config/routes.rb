@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
 
+  get 'activities/index'
+
+  resources :activities
   devise_for :users,:controllers => { :registrations => "user/registrations"}
 
   #devise_scope :user do
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
      resources :bookings  
     end  
   end
- 
+ post 'add_friend', to: 'users#add_friend'
  resources :user_bookings, only: [:create, :destroy]
   
  get '/search' => 'pages#search', :as => 'search_page'

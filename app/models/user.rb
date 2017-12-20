@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :bookings, dependent: :destroy
   has_many :store_bikes, through: :bookings
   has_many :friendships
+  has_many :activities
   has_many :friends, through: :friendships
   acts_as_voter
   
@@ -30,6 +31,13 @@ class User < ActiveRecord::Base
     under_store_bike_limit? && !store_bike_already_added?(id)
   end
   
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
+  
+  def not_friends_with?(friend_id)
+    friendships.where(friend_id: friend_id).count < 1
+  end
   
   def self.search(param)
     param.strip!

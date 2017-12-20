@@ -4,6 +4,8 @@ class Booking < ActiveRecord::Base
   include Bookable
   belongs_to :user
 
+  include PublicActivity::Common
+  #tracked owner: ->(controller, model) { controller && controller.current_user }
   
   def sum_price
     if store_bike.bike.price.present?

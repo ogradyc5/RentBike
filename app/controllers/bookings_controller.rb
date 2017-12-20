@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   #before_action :authenticate_user!, :except => [:show, :index]
   before_action :find_store 
   before_action :find_store_bike
+  
  
   def index
     @bookings = Booking.where("store_bike_id = ? AND end_time >= ?", @store_bike.id, Time.now).order(:start_time)
@@ -24,6 +25,7 @@ class BookingsController < ApplicationController
     #@booking.store_bike = StoreBike.find(params[:store_bike]).first
    # @booking.id = @store_bike
     if @booking.save
+      @booking.create_activity :create, owner: current_user
       flash[:success] = "Booking was successfully created"
       #redirect_to store_store_bike_bookings_path(@store, @store_bike, method: :get)
       #redirect_to store_store_bike_bookings_show_path
@@ -32,30 +34,7 @@ class BookingsController < ApplicationController
       render 'new'
     end
   end
-  
- #  def search
-  #  if params[:booking].blank?
-   #     flash.now[:danger] = "You have entered an empty search"
-    #else
-     #   @booking = Booking.new_from_lookup(params[:booking])
-      #  flash.now[:danger] = "You have entered an invalid search" unless
-      #@booking
-    #end
-    #render partial: 'users/result'
-  #end
-
-  
-  
-   #def create
-    #store_bike = StoreBike.find_by_id(params[:store_bike_id])
-    #if store_bike.blank?
-     # store_bike = StoreBike.new_from_lookup(params[:store_bike_id])
-      #store_bike.save
-    #end
-    #@booking = Booking.create(user: current_user, store_bike: store_bike)
-    #flash[:success] = "Booking #{@booking.bike.name} was successfully added to portfolio"
-    #redirect_to my_profile_path
-  #end
+ 
 
   def show
     @booking = Booking.find(params[:id])
@@ -64,6 +43,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id]).destroy
     if @booking.destroy
+      @booking.create_activity :destroy, owner: current_user
       flash[:notice] = "Booking: #{@booking.start_time.strftime('%e %b %Y %H:%M%p')} to #{@booking.end_time.strftime('%e %b %Y %H:%M%p')} deleted"
      # redirect_to store_store_bike_bookings_path(@store, @store_bike)
      redirect_to my_profile_path
@@ -93,6 +73,7 @@ class BookingsController < ApplicationController
       flash[:notice] = 'Your booking was updated succesfully'
 
       if request.xhr?
+        @booking.create_activity :update, owner: current_user
         render json: {status: :success}.to_json
       else
         redirect_to store_store_bike_bookings_path(@store, @store_bike)
@@ -122,8 +103,8 @@ private
   def find_store  
     if params[:store_id]  
       @store = Store.find_by_id(params[:store_id])  
-    end  
-  end
+    end
+end
 
  
 end
