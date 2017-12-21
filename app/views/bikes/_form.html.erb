@@ -17,9 +17,9 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><br><br>
     <%= f.label :price %><br>
-    <%= f.number_to_currency_field :price %>
+    <%= f.number_field :price, value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), :step => 0.01 %><br><br>
     <%= f.label :image %><br>
     <%= f.file_field :image %>
     <% if f.object.image? %>

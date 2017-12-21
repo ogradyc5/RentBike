@@ -4,11 +4,12 @@
 
 <% if @storebike %>
   <div class="well results-block">
-    <strong>Bike:<%= @storebike.id %></strong>
-    <strong>Name:<%= @storebike.bike.name%></strong>
-    <strong>Store:<%= @storebike.store.name%></strong>
-    <strong>Price:<%= @storebike.bike.price%></strong>
+    
+      <td>Bike:<%= @storebike.id %></td>
+      <td>Name:<%= @storebike.bike.name%></td>
+      <td>Store:<%= @storebike.store.name%></td>
+      <td>Price:<%= @storebike.bike.price%></td>
+   
   </div>
-  
 <% end %>
 

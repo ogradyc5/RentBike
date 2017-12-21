@@ -2,10 +2,12 @@
 <%= render 'friends/lookup' %>
 
 <% if @friendships.size > 0 %>
+ <div class="container vertical-center">
+  <div class="col-md-12 col-md-offset-0">
     <table class="table table-striped">
       <thead>
         <tr>
-            <th colspan = "3" class="page-header">
+            <th colspan = "6" class="page-header">
                 <h2>My Friends</h2>
             </th>
         </tr>
@@ -34,5 +36,7 @@
 <% else %>
     <div class="row col-lg-12">
         <p class = "lead">You dont have any friends yet</p>
+    </div>
+    </div>
     </div>
 <% end %>

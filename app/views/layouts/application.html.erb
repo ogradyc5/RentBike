@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
-  
+
 
 <head>
 
@@ -16,17 +16,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.js"></script>
   
 </head>
+<% unless controller_name == "welcome" %>
 <%= render 'layouts/header' %>
+<% end %>
   <body>
-    <div class = "container">
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-      <%= bootstrap_flash %>
-      <%= yield %>
-    </div>
+    <%= yield %>
+      <%= render 'layouts/footer' %>
   </body>
 </html>

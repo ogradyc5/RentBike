@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+    color: #ff0040;
+   //color: #cecece;
+  // color: #adcfe6;
+   //color: #ffff00;
+}
+
+.container {
+    text-align: center;
+    margin: 0 auto;
+    float: center;
+    //color: #778899;
+
+}
+
 
 .col-1, .col-2, .col-3 {
     float: left;
@@ -17,3 +32,37 @@
     width: 27.5%;
     padding: 0 2.5%;
 }
+
+body {
+    //background-image: url("ehud-neuhaus-108366.jpg");
+    //background-image: url("julia-komarova-71662.jpg");
+    //background-image: url("kiwihug-265692.jpg");
+    //background-image: url("clark-young-403370.jpg");
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("natthakit-khamso-201958.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+}
+
+body, html {
+    min-height: 100%;
+    overflow:auto;
+    padding-bottom:100px;
+    height: 100%;
+}
+
+.results {
+    
+    float: left;
+}
+
+//.wrapper {
+ //   min-height: 100%;
+   /// height: auto !important;
+//    height: 100%;
+  //  margin: 0 auto -70px; /* the bottom margin is the negative value of the footer's height */
+//}
+//.footer-widget, .push {
+  //  height: 70px; /* .push must be the same height as .footer */
+//}
+

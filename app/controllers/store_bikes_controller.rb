@@ -1,8 +1,8 @@
 class StoreBikesController < ApplicationController
   #before_action :authenticate_user!, :except => [:show, :index]
   before_action :find_store 
-  before_action :set_store_bike, only: [:create, :show, :edit, :update, :destroy]
-  
+  before_action :set_store_bike, only: [:show, :edit, :update, :destroy]
+  before_action :find_store 
 
 
   def index  
@@ -38,15 +38,23 @@ class StoreBikesController < ApplicationController
   def create
     #@store_bike = StoreBike.create(store_bike_params)
    # @store_bike = StoreBike.new(params[:store_bike])
-    @store_bike = StoreBike.create(store_bike_params)
+    @store_bike = StoreBike.new(store_bike_params)
+
     if @store_bike.save
-      redirect_to store_bikes_path
+      redirect_to store_store_bikes_path
       flash[:notice] ='successfully created'
     else
       render 'new'
       flash[:error] = "Unable to create store bike. Please try again"
     end
   end
+  
+  def add
+     @user = User.find(session[:user_id])
+     @event = Event.find(params[:id])
+     @user.events << @event
+     flash[:notice] = 'Event was saved.'
+   end
 
   def destroy
     @store_bike = StoreBike.find(params[:id])
@@ -76,7 +84,7 @@ class StoreBikesController < ApplicationController
     end
     
     def store_bike_params  
-      params.require(:store_bike).permit(:bike_id, :store_id)  
+      params.require(:store_bike).permit(:store_id, :bike_id)  
     end
     
    

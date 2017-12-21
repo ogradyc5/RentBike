@@ -1,20 +1,58 @@
 * {
     font-family: 'Bungee', cursive;
+    margin: 0;
     
+}
+
+tr.spaceUnder > td {
+
+}
+
+table{
+  //border-spacing: 5px 12px;
+  border-spacing: 5px;
+  border-collapse: separate;
+}
+
+td {
+  //width: 100%;
+  //height: 20px;
+  padding: 10px;
+  //border: 1px solid blue;
+
+  text-align: center;
+}
+
+.title {
+    font-family: 'Bungee', cursive;
+    //color: #ff0040;
+    color: #31f5ff;
 }
 
 .user-name {
     padding-top: 15px;
-    color: #fff;
+    color: #ff0040;
     font-family: 'Bungee', cursive;
 }
 
 .nav.navbar-right li {
 
-    .btn-danger:hover {
+    .btn:hover {
         background-color: darken(#d9534f, 20%) !important;
         font-family: 'Bungee', cursive;
     }
+    
+}
+
+span + span {
+    margin-left: 30px;
+}
+
+
+
+
+.navbar-brand{
+    text-align: middle;
 }
 
 .nav.navbar-nav li {
@@ -23,6 +61,7 @@
 
 .btn {
     font-family: 'Bungee', cursive;
+     
 }
 
 
@@ -34,7 +73,36 @@
     text-decoration: none;
 }
 
+footer {
+    background-color:transparent !important;
+}
+
 .unlike:hover {
     text-decoration: none;
 }
+
+.jumbotron {
+    //background-image: url("18216525_1962380480648042_6610898501708973049_o.jpg");
+   // background-size: cover;
+   // background-repeat: no-repeat;
+    background-color:transparent !important;
+    color: white;
+    text-align: center;
+}
+
+.vertical-center {
+  min-height: 100%; 
+  min-height: 15vh;    
+  display: flex;
+  align-items: center;
+}
+
+body {
+    //background-image: url("ehud-neuhaus-108366.jpg");
+    //background-image: url("julia-komarova-71662.jpg");
+    //background-image: url("kiwihug-265692.jpg");
+    //background-image: url("clark-young-403370.jpg");
+    //background-color: #fff;
+}
+
 

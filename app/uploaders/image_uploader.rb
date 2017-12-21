@@ -29,8 +29,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   
+  version :resized do
+    # returns an image with a maximum width of 100px 
+    # while maintaining the aspect ratio
+    # 10000 is used to tell CW that the height is free 
+    # and so that it will hit the 100 px width first
+    process crop: '100x50+0+0'
+    process :resize_to_fit => [50, 50]
+  end
+  
   # Create different versions of your uploaded files:
    version :thumb do
+     process crop: '100x50+0+0'
      process :resize_to_fill => [80, 80]
    end
 
@@ -46,4 +56,29 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+
+  private
+
+  # Simplest way
+  def crop(geometry)
+    manipulate! do |img|      
+      img.crop(geometry)
+      img
+    end    
+  end
+
+  # Resize and crop square from Center
+  def resize_and_crop(size)  
+    manipulate! do |image|                 
+      if image[:width] < image[:height]
+        remove = ((image[:height] - image[:width])/2).round 
+        image.shave("0x#{remove}") 
+      elsif image[:width] > image[:height] 
+        remove = ((image[:width] - image[:height])/2).round
+        image.shave("#{remove}x0")
+      end
+      image.resize("#{size}x#{size}")
+      image
+    end
+  end
 end

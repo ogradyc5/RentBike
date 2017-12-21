@@ -27,9 +27,9 @@ class BookingsController < ApplicationController
     if @booking.save
       @booking.create_activity :create, owner: current_user
       flash[:success] = "Booking was successfully created"
-      #redirect_to store_store_bike_bookings_path(@store, @store_bike, method: :get)
+      redirect_to store_store_bike_bookings_path(@store, @store_bike, method: :get)
       #redirect_to store_store_bike_bookings_show_path
-      redirect_to my_profile_path
+      #redirect_to my_profile_path
     else
       render 'new'
     end
@@ -43,10 +43,10 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id]).destroy
     if @booking.destroy
-      @booking.create_activity :destroy, owner: current_user
       flash[:notice] = "Booking: #{@booking.start_time.strftime('%e %b %Y %H:%M%p')} to #{@booking.end_time.strftime('%e %b %Y %H:%M%p')} deleted"
-     # redirect_to store_store_bike_bookings_path(@store, @store_bike)
-     redirect_to my_profile_path
+      #redirect_to store_store_bike_bookings_path(@store, @store_bike)
+      redirect_to my_profile_path
+      #@booking.create_activity :destroy, owner: current_user
     else
       render 'index'
     end

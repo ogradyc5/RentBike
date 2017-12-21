@@ -5,14 +5,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @bike.name %>
-  <strong>Price:</strong>
-  <%= @bike.price%>
-  <strong>Image:</strong-->
-  <%= image_tag @bike.image%>
+  <span>Name:</span>
+  <span><strong><%= @bike.name %></strong></span>
+  <span><strong>Price:</strong></span>
+  <span><%= @bike.price%></span>
 </p>
+<div class="photo">
+  <%= image_tag @bike.image%>
+</div>
 
-<%= link_to 'Edit', edit_bike_path(@bike) %> |
-<%= link_to 'Back', bikes_path %>
+  <%= link_to 'Edit', edit_bike_path(@bike) %> |
+  <%= link_to 'Back', bikes_path %>
 </html>

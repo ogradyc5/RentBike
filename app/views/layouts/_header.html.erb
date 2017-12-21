@@ -1,40 +1,46 @@
 <!--link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet' type='text/css'-->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
+    
     <div class="navbar-header">
-      <!--a class="navbar-brand" href="#">CycleHub</a--> 
+      <%= link_to image_tag("logo.png", alt: "logo", width: '70px'), '/', class: 'navbar-brand' %>
       <%= link_to 'CycleHub', root_path, class: "navbar-brand" %>
     </div>
-  <% if current_user %>
-    <ul class="nav navbar-nav">
-      <li class="active"><%= link_to 'my_profile', class: 'btn btn-danger sign-up' do %><i class="glyphicon glyphicon-ok"></i> My Profile <% end %></li>
-      <li class="active"><%= link_to "Edit Profile", edit_registration_path(current_user) %></li>
-      <li class="active"><%= link_to "My Friends", my_friends_path %> </li>
-      <%= form_tag(search_page_path, :method => "get", class: 'navbar-form navbar-left') do %>  
-        <div class="input-group">  
-          <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
-          <div class="input-group-btn">  
-            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+      
+    <% if current_user %>
+   
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to 'My Profile', my_profile_path%></li>
+        <li class="active"><%= link_to "Edit Profile", edit_registration_path(current_user) %></li>
+        <li class="active"><%= link_to "Rent a Bike", stores_path %></li>
+        <li class="active"><%= link_to "Recent Activities", activities_path %></li>
+        <li class="active"><%= link_to "My Friends", my_friends_path %></li>
+      </ul>
+  
+     
+        <%= form_tag(search_page_path, :method => "get", class: 'navbar-form navbar-left') do %>  
+          <div class="input-group">  
+            <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+            <div class="input-group-btn">  
+              <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+            </div>  
           </div>  
-        </div>  
-      <% end %>
-    </ul>
-    
-    <ul class="nav navbar-nav navbar-right col-md-6">
-      <li class="col-md-8 user-name text-right">
-        <i class="fa fa-user"></i>
-        <%= current_user.full_name.present? ? current_user.full_name : current_user.email %>
-      </li>
-      <li> <%= link_to new_user_registration_path, class: 'btn btn-info sign-up' do %><i class="glyphicon glyphicon-user"></i>Sign Up <% end %></li>
-        <% if user_signed_in? %>
+       
 
-          <li><%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-default log-out' do %><i class="glyphicon glyphicon-sign-out"></i>Log Out <% end %></li>
-          
+      <ul class="nav navbar-nav navbar-right col-md-5">
+        <li class="col-md-8 user-name text-right">
+          <i class="fa fa-user"></i>
+            <%= current_user.first_name.present? ? current_user.first_name : current_user.email %>
+        </li>
+        <%= link_to new_user_registration_path, class: 'btn btn-info sign-up' do %><i class="glyphicon glyphicon-user"></i>Sign Up <% end %>
+       
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-default log-out' do %><i class="glyphicon glyphicon-sign-out"></i>Log Out <% end %>
         <% else %>
-        
-          <li><%= link_to new_user_session_path,  class: 'btn btn-default log-in' do %><i class="glyphicon glyphicon-sign-in"></i>Log In <% end %></li>
-          
+          <%= link_to new_user_session_path,  class: 'btn btn-default log-in' do %><i class="glyphicon glyphicon-sign-in"></i>Log In <% end %>
         <% end %>
-    </ul>
-  <% end %>
+        
+      </ul>
+       <% end %>
+    <% end %>
 </nav>

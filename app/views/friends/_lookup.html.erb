@@ -1,21 +1,26 @@
-<h1> My Friends </h1>
-
-<h3> Friend Search </h3>
+<!DOCTYPE>
+<html>
+<div class="form-group row no-padding text-center col-md-8">
+    <div class="col-md-6 col-md-offset-6">
+        <h1 class="title"> Members </h1>
+    </div>
+</div>
 
 <div id="friend-lookup">
     <%= form_tag search_friends_path, remote: true, method: :get, id: "friend-lookup-form" do %>
-    <div class="form-group row no-padding text-center col-md-12">
-        <div class="col-md-10">
-            <%= text_field_tag :search_param, params[:search_param], placeholder: "Enter name or email", autofocus: true,
-            class: "form-control search-box input-lg" %>
-            
+    <div class="form-group row no-padding text-center col-md-8">
+        <div class="col-md-6 col-md-offset-6">
+            <%= text_field_tag :search_param, params[:search_param], placeholder: "Enter name or email", autofocus: true, class: "form-control search-box input-lg" %>
         </div>
-            <div class="col-md-2">
+    </div>
+        <div class="form-group row no-padding text-center col-md-8">
+            <div class="col-md-6 col-md-offset-6">
                 <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
                     <i class="fa fa-search"></i> Search
                 <% end %>
             </div>
         </div>
+    </div>
 
     
     <% end %>
@@ -24,3 +29,4 @@
 <div id="results">
     <%= render "friends/result" %>
 </div>
+</html>

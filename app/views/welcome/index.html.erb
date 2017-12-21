@@ -1,15 +1,25 @@
-  <% if current_user %>
-    <div class="jumbotron">
-      <h2>Welcome <%= current_user.email %></h3>
-  <% else %>
-    <div class="jumbotron">
-      <h2>Welcome to Cycle Hub's Bicycle Renting App!</h2>
-  <% end %>
-  <p>🚲 You'll love managing your Cycling with our application 🚲</p>
-  </div>
-
-
-  <div class="row">
+ <!DOCTYPE html>
+ <html>
+   <head>
+      <div class="container">
+         <div id="outer-box">
+          <% if current_user %>
+              <h2>Welcome <%= current_user.email %></h2>
+          <% else %>
+              <h2>Cycle Hub</h2>
+          <% end %>
+            <%= link_to new_user_registration_path, class: 'btn btn-info sign-up' do %><i class="glyphicon glyphicon-user"></i>Sign Up <% end %>
+            <% if user_signed_in? %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-default log-out' do %><i class="glyphicon glyphicon-sign-out"></i>Log Out <% end %>
+            <% else %>
+              <%= link_to new_user_session_path,  class: 'btn btn-default log-in' do %><i class="glyphicon glyphicon-sign-in"></i>Log In <% end %>
+          <% end %>
+          </div>
+      </div>
+  </head>
+  
+<div class="contain">
+  <!--div class="row">
     <div class="plans clearfix">
       <div class="col-lg-3 col-lg-offset-3 plan">
         <h2>Professional Racing</h2>
@@ -20,7 +30,7 @@
               <li>Location ordering</li>
             </ul>
           </div>
-        <%= link_to new_user_registration_path, class: 'btn btn-danger sign-up' do %><i class="glyphicon glyphicon-ok"></i>Professional Bikes <% end %>
+        <!%= link_to new_user_registration_path, class: 'btn btn-danger sign-up' do %><i class="glyphicon glyphicon-ok"></i>Professional Bikes <!% end %>
       </div>
         
       <div class="col-lg-3 plan">
@@ -32,11 +42,12 @@
               <li>Access anywhere</li>
             </ul>
           </div>
-          <%= link_to new_user_registration_path, class: 'btn btn-primary sign-up' do %><i class="glyphicon glyphicon-ok"></i>Recreational Bikes <% end %>
+          <!%= link_to new_user_registration_path, class: 'btn btn-primary sign-up' do %><i class="glyphicon glyphicon-ok"></i>Recreational Bikes <!% end %>
         </div>
       </div>
-      <%= link_to new_user_session_path, class: 'btn btn-danger login' do %><i class="glyphicon glyphicon-ok"></i>signin <% end %>
-      <%= link_to new_user_registration_path, class: 'btn btn-danger sign-up' do %><i class="glyphicon glyphicon-ok"></i>signup <% end %>
-    </div>
+      <!--%= link_to new_user_session_path, class: 'btn btn-danger login' do %><i class="glyphicon glyphicon-ok"></i>signin <!% end %>
+      <!--%= link_to new_user_registration_path, class: 'btn btn-danger sign-up' do %><i class="glyphicon glyphicon-ok"></i>signup <!% end %-->
+    <!--/div-->
     
-
+</div>
+</html>
