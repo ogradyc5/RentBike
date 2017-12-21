@@ -57,7 +57,7 @@ group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'web-console', '2.0'
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 group :production do
