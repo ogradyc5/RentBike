@@ -298,7 +298,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    pg (0.21.0)
+    pg (0.20.0)
     public_activity (1.5.0)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
@@ -437,7 +437,7 @@ DEPENDENCIES
   momentjs-rails
   normalize-rails
   paperclip (~> 5.0.0)
-  pg
+  pg (= 0.20.0)
   public_activity
   puma
   rails (= 4.2.5)
